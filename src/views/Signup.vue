@@ -1,3 +1,4 @@
+
 <template>
   <div class="signup">
     <form v-on:submit.prevent="submit()">
@@ -6,11 +7,14 @@
         <li class="text-danger" v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       <div class="form-group">
-        <label>First_name:</label>
+        <label>First name:</label>
         <input type="text" class="form-control" v-model="first_name" />
-
-        <label>Last_name:</label>
+        <small>{{ 20 - first_name.length }} characters remaining</small>
+      </div>
+      <div class="form-group">
+        <label>Last name:</label>
         <input type="text" class="form-control" v-model="last_name" />
+        <small>{{ 40 - last_name.length }} characters remaining</small>
       </div>
       <div class="form-group">
         <label>Email:</label>
@@ -19,10 +23,14 @@
       <div class="form-group">
         <label>Password:</label>
         <input type="password" class="form-control" v-model="password" />
+        <small v-if="password.length > 0 && password.length < 6" class="text-danger">
+          Password must be at least 6 characters
+        </small>
       </div>
       <div class="form-group">
         <label>Password confirmation:</label>
         <input type="password" class="form-control" v-model="passwordConfirmation" />
+        <small v-if="passwordConfirmation !== password" class="text-danger">Passwords must match!</small>
       </div>
       <div class="form-group">
         <label>Date of Birth:</label>
@@ -32,8 +40,9 @@
         <label>Gender:</label>
         <input type="text" class="form-control" v-model="gender" />
       </div>
+
       <div class="form-group">
-        <label>mp_username</label>
+        <label>Mountain Project Username:</label>
         <input type="text" class="form-control" v-model="mp_username" />
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
@@ -48,7 +57,6 @@ export default {
     return {
       first_name: "",
       last_name: "",
-      gender: "",
       mp_username: "",
       flagged: false,
       dob: "",
@@ -83,3 +91,62 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  body {
+    background-color: #fafafa !important;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  .signup > div{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-grow: 1;
+  }
+
+  .signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2%;
+    width: 100%;
+  }
+
+  .field-wrap, .wrapper{
+    width: 100%;
+  }
+
+  .dropList{
+    z-index: 10;
+    background-color: #FFF;
+    position: relative;
+    width: 40%;
+    top: 5px;
+    right: 12px;
+  }
+
+  .signup{
+    margin: 10px 0 20px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .hint{
+    font-size: 10px;
+    font-style: italic;
+    color: purple;
+  }
+
+  .help-block{
+    color: red;
+  }
+</style>
