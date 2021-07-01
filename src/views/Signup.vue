@@ -93,60 +93,17 @@ export default {
 </script>
 
 <style scoped>
-  body {
-    background-color: #fafafa !important;
+.my-dropdown-toggle {
+  border-radius: 5px;
+
+  ::v-deep .dropdown-toggle {
+    color: tomato;
+    font-size: 25px;
+    font-weight: 800;
   }
 
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+  ::v-deep .dropdown-toggle-placeholder {
+    color: #c4c4c4;
   }
-
-  .signup > div{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-grow: 1;
-  }
-
-  .signup{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 2%;
-    width: 100%;
-  }
-
-  .field-wrap, .wrapper{
-    width: 100%;
-  }
-
-  .dropList{
-    z-index: 10;
-    background-color: #FFF;
-    position: relative;
-    width: 40%;
-    top: 5px;
-    right: 12px;
-  }
-
-  .signup{
-    margin: 10px 0 20px 18px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: left;
-  }
-
-  .hint{
-    font-size: 10px;
-    font-style: italic;
-    color: purple;
-  }
-
-  .help-block{
-    color: red;
-  }
+}
 </style>
